@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import validator from 'validator'
 import Button from '@/Components/Button';
 import Guest from '@/Layouts/Guest';
 import Input from '@/Components/Input';
@@ -10,6 +11,7 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        phone: '',
         password: '',
         password_confirmation: '',
     });
@@ -35,6 +37,13 @@ export default function Register() {
         else {
             setIsValidEmail(false);
         }
+    }
+
+    const [isValidPhone, setIsValidPhone] = useState(false);
+
+    function checkPhone(e) {
+        const isValidPhoneNumber = validator.isMobilePhone(e.target.value)
+        setIsValidPhone(isValidPhoneNumber)
     }
 
     const onHandleChange = (event) => {
@@ -80,6 +89,21 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="username"
                         handleChange={onHandleChange}
+                        required
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <Label forInput="Phone" value="phone" />
+                    {!isValidPhone && <div className="font-medium text-red-600">Invalid phone number</div>}
+                    <Input
+                        type="number"
+                        name="phone"
+                        value={data.phone}
+                        className="mt-1 block w-full"
+                        autoComplete="phone"
+                        handleChange={onHandleChange}
+                        onInput={checkPhone}
                         required
                     />
                 </div>
