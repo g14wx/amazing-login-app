@@ -35,6 +35,13 @@ Also If you want to make works the "forgot password" section, then you have to c
     MAIL_ENCRYPTION=null  
     MAIL_FROM_ADDRESS="hello@example.com"  
     MAIL_FROM_NAME="${APP_NAME}"
+Oh I almost forget, If you want to enable login with google, you have to fill this too in the *.env* file:
+
+    GOOGLE_CLIENT_ID=
+    GOOGLE_CLIENT_SECRET=
+    GOOGLE_REDIRECT=
+
+
 Then you have to run the migrations:
 
     php artisan migrate
