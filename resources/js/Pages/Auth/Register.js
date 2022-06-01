@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@/Components/Button';
 import Guest from '@/Layouts/Guest';
 import Input from '@/Components/Input';
@@ -20,8 +20,26 @@ export default function Register() {
         };
     }, []);
 
+    const [isValidEmail, setIsValidEmail] = useState(false);
+
+    function emailVerify(email){
+
+        // don't remember from where i copied this code, but this works.
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        console.log("validating email");
+
+        if ( re.test(email) ) {
+            setIsValidEmail(true);
+        }
+        else {
+            setIsValidEmail(false);
+        }
+    }
+
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        emailVerify(event.target.value);
     };
 
     const submit = (e) => {
@@ -54,7 +72,7 @@ export default function Register() {
 
                 <div className="mt-4">
                     <Label forInput="email" value="Email" />
-
+                    {!isValidEmail && <div className="font-medium text-red-600">Invalid Email</div>}
                     <Input
                         type="email"
                         name="email"
