@@ -22,6 +22,14 @@ export default function Welcome(props) {
                             <Link href={route('register')} className="ml-4 text-sm text-gray-700 underline">
                                 Register
                             </Link>
+
+                            <a href="/redirect" className="ml-4 text-sm text-gray-700 underline">
+                               Login with google
+                            </a>
+
+                            <Link href={route('password.request')} className="ml-4 text-sm text-gray-700 underline">
+                                change password
+                            </Link>
                         </>
                     )}
                 </div>
@@ -52,6 +60,15 @@ export default function Welcome(props) {
                                           className="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">
                                         Register
                                     </Link>
+                                    <a href='/redirect'
+                                          className="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out">
+                                       Login with google
+                                    </a>
+
+                                    <a href={route('password.request')}
+                                       className="inline-block px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500 hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-500 active:shadow-lg transition duration-150 ease-in-out">
+                                        Change password
+                                    </a>
                                 </div>
                             )}
                         </div>
